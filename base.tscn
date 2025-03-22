@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://gpg1lbyaokba"]
+
+[ext_resource type="Texture2D" uid="uid://81durjj0cwdm" path="res://Assets/Untitled.png" id="1_3vi8l"]
+[ext_resource type="Texture2D" uid="uid://co08olwhi7asd" path="res://Assets/Blue.png" id="2_8rhti"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="Blue" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(586.5, 333.75)
+scale = Vector2(2.48312, 1.59456)
+texture = ExtResource("2_8rhti")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Untitled" type="Sprite2D" parent="TileMap"]
+position = Vector2(589.25, 613.5)
+scale = Vector2(1.13305, 0.0823442)
+texture = ExtResource("1_3vi8l")
