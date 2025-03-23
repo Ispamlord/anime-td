@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf481g2bx5uuf"]
+
+[ext_resource type="Script" uid="uid://w1biydvvrwsm" path="res://Scripts/pathfinding_component.gd" id="1_r6vf5"]
+
+[node name="PathfindingComponent" type="CharacterBody2D"]
+script = ExtResource("1_r6vf5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
