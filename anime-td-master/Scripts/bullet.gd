@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction: Vector2
-const speed = 180
+const speed = 45
 
 var damage := 20
 
@@ -16,3 +16,7 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		hitbox.damage(attack)
 		print("collide with" + str(attack.damage) + "attack")
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw2kpmjqhd37r"]
+[gd_scene load_steps=6 format=3 uid="uid://dw2kpmjqhd37r"]
 
 [ext_resource type="PackedScene" uid="uid://cqs6cpxfp5ao" path="res://Scenes/health_component.tscn" id="1_nbpah"]
-[ext_resource type="Script" uid="uid://bn5ivutuof436" path="res://Scripts/health_component.gd" id="2_j7up4"]
 [ext_resource type="PackedScene" uid="uid://b3ds56mtxt2j6" path="res://Scenes/hitbox_component.tscn" id="3_yojle"]
-[ext_resource type="Script" uid="uid://do6rhcxqsyjbq" path="res://Scripts/hitbox_component.gd" id="4_j7up4"]
 [ext_resource type="Texture2D" uid="uid://cqu1xitc2kas7" path="res://icon.svg" id="5_yojle"]
 [ext_resource type="PackedScene" uid="uid://cf481g2bx5uuf" path="res://Scenes/pathfinding_component.tscn" id="6_dr0i1"]
 
@@ -17,14 +15,12 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_yojle")]
-script = ExtResource("4_j7up4")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_yojle")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_nbpah")]
-script = ExtResource("2_j7up4")
 
 [node name="PathfindingComponent" parent="." instance=ExtResource("6_dr0i1")]
 

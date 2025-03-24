@@ -8,6 +8,7 @@ var health : int
 func _ready():
 	health = MAX_HEALTH
 
+
 func damage(attack: Attack):
 	health -= attack.damage
 	print('left hp: ' + str(health))

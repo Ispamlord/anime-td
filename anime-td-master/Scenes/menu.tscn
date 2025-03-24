@@ -1,25 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://c448bphled7m2"]
+[gd_scene load_steps=3 format=3 uid="uid://c448bphled7m2"]
 
-[ext_resource type="PackedScene" uid="uid://dw2kpmjqhd37r" path="res://Scenes/cummer.tscn" id="1_1rerr"]
-[ext_resource type="PackedScene" uid="uid://ca1avlwbiqdji" path="res://Scenes/test_tower.tscn" id="2_xhh6f"]
+[ext_resource type="Script" uid="uid://b8hqsnluujpkg" path="res://Scenes/menu_button.gd" id="2_xhh6f"]
 [ext_resource type="AudioStream" uid="uid://chd5od6ey0kld" path="res://lesginka.mp3" id="3_cayip"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_cayip"]
-vertices = PackedVector2Array(173.07, 568.781, 324.508, 452.773, 248.43, 579.852, 19.2031, 21.9766, 1128.79, 20.0078, 1059.08, 632.82, 508.258, 404.727, 22.0781, 573.898, 35.8594, 453.547, 164.719, 461.391, 161.82, 563.031, 29.6719, 627.906, 140.18, 419.898, 60.3125, 379.508, 349.352, 411.281, 254.148, 589.977, 349.359, 411.281, 594.68, 591.047, 553.047, 623)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11), PackedInt32Array(12, 13, 3, 14), PackedInt32Array(11, 10, 0), PackedInt32Array(0, 2, 15, 11), PackedInt32Array(16, 14, 3, 6), PackedInt32Array(17, 6, 5), PackedInt32Array(17, 5, 18, 15), PackedInt32Array(15, 18, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(8, 12, 1140, 10, 1068, 643, 553, 633, 21, 638, 12, 574, 27, 443, 175, 452, 172, 557, 360, 413, 260, 580, 579, 581, 502, 415, 138, 430, 51, 386)])
-
 [node name="Menu" type="Node2D"]
-
-[node name="Cummer" parent="." instance=ExtResource("1_1rerr")]
-position = Vector2(160, 139)
-
-[node name="TestTower" parent="." instance=ExtResource("2_xhh6f")]
-position = Vector2(447, 511)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_cayip")
 volume_db = -20.885
+autoplay = true
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_cayip")
+[node name="Button" type="Button" parent="."]
+offset_left = 536.0
+offset_top = 287.0
+offset_right = 592.0
+offset_bottom = 318.0
+text = "Играт"
+script = ExtResource("2_xhh6f")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 53.0
+offset_right = 155.0
+offset_bottom = 84.0
+text = "1 уровен"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Control/Button" to="Button" method="_on_button_pressed"]
