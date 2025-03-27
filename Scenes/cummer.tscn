@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dw2kpmjqhd37r"]
+
+[ext_resource type="PackedScene" uid="uid://cqs6cpxfp5ao" path="res://Scenes/health_component.tscn" id="1_nbpah"]
+[ext_resource type="Script" uid="uid://bumoyc007sqv0" path="res://Scripts/cummer.gd" id="1_yojle"]
+[ext_resource type="PackedScene" uid="uid://b3ds56mtxt2j6" path="res://Scenes/hitbox_component.tscn" id="3_yojle"]
+[ext_resource type="Texture2D" uid="uid://07xhemiik3eb" path="res://Assets/vNaUht5k0Qk.jpg" id="5_yojle"]
+[ext_resource type="PackedScene" uid="uid://cf481g2bx5uuf" path="res://Scenes/pathfinding_component.tscn" id="6_dr0i1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yojle"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j7up4"]
+radius = 8.0
+
+[node name="Cummer" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_yojle")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_yojle")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_yojle")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_nbpah")]
+
+[node name="PathfindingComponent" parent="." instance=ExtResource("6_dr0i1")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0193004, 0.0219479)
+texture = ExtResource("5_yojle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j7up4")
+
+[connection signal="tree_entered" from="." to="PathfindingComponent" method="_on_cummer_tree_entered"]
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
