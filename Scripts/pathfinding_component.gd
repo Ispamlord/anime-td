@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("right_mouse"):
 		nav_agent.target_position = get_global_mouse_position()
-		print(nav_agent.target_position)
 		await get_tree().create_timer(0.5).timeout
 
 

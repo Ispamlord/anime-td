@@ -14,11 +14,16 @@ func _on_hitbox_component_area_entered(area: Area2D) -> void:
 			queue_free()
 			
 		if check.scene_file_path == "res://Scenes/test_wall.tscn": # если родитель стенка то челик аттакует и отпрыгывает
-			var attack = Attack.new()
-			attack.damage = damage
-			hitbox.damage(attack)
-			print("collide with" + str(attack.damage) + "attack")
-			self.global_position -= velocity
+			while check.scene_file_path == "res://Scenes/test_wall.tscn":	
+				var attack = Attack.new()
+				attack.damage = damage
+				hitbox.damage(attack)
+				print("collide with" + str(attack.damage) + "attack")
+				await get_tree().create_timer(1.0).timeout
+				if check == null:
+					print('jopa')
+					break # без бреак скрипт ломается потому что scene_file_path несуществует даже как null
+			
 			
 # КАК ПОЧИНИТЬ СТЕНЫ?
 # КАК ПОЧИНИТЬ СТЕНЫ?

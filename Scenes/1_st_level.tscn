@@ -107,6 +107,8 @@ position = Vector2(613, 562)
 [node name="Cummer" parent="." instance=ExtResource("9_dc030")]
 position = Vector2(101, 92)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="child_exiting_tree" from="LevelHandler" to="LevelHandler" method="_on_child_exiting_tree"]
 [connection signal="timeout" from="LevelHandler/Timer" to="LevelHandler" method="_on_timer_timeout"]
 [connection signal="toggled" from="UI/BuildWall" to="LevelHandler" method="_on_build_wall_toggled"]
